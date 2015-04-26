@@ -1,17 +1,24 @@
 package xyz.dannyc.textdatatest;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import xyz.dannyc.textdatatest.data.DatabaseHelper;
 
 
 public class DataActivity extends ActionBarActivity {
 
-    @Override
+	private DatabaseHelper dbAdapter;
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
+		dbAdapter = new DatabaseHelper(this);
+		ListView listView = (ListView) findViewById(R.id.listView);
+		listView.setAdapter(dbAdapter);
     }
 
 
